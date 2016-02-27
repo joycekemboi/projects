@@ -7,6 +7,10 @@
  				controller:'UserController',
  				templateUrl:'app/views/users/view_projects.html'
  			})
+            .when('/list_projects',{
+ 				controller:'UserController',
+ 				templateUrl:'app/views/users/list_projects.html'
+ 			})
  			.when('/users/view_issues/:id',{
  				controller:'UserController',
  				templateUrl:'app/views/users/view_issues.html'

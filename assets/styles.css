@@ -6,3 +6,8 @@ body{
 	width:80%;
 	margin-left:10em;
 }
+.styled{
+	border: 1px solid rgb(221, 221, 221);
+margin-top: 2em;
+/*background: rgb(246, 240, 240) none repeat scroll 0% 0%;*/
+}

@@ -3,13 +3,13 @@
      // $scope.jj = 'mee';
      $scope.settings = settings;
     
-     $scope.view_projects = function(){
-       $scope.reposLoaded = false;
+     $scope.view_projects = function(username){
+       // $scope.reposLoaded = false;
 
-        $scope.userLoaded = false;
-        $scope.name = "Joyce Kemboi";
-        $scope.username = "joycekemboi";
-         
+       //  $scope.userLoaded = false;
+       //  $scope.name = "Joyce Kemboi";
+       //  $scope.username = "joycekemboi";
+     
         $http.get("https://api.github.com/users/" + $scope.username)
             .success(function (data) {
                 $scope.userData = data;
@@ -32,16 +32,16 @@
 
      $scope.edit = function(){
      	var id = $routeParams.id;
-      
-     	// $http({
-      //         method:'post',
-      //         url:'api/users/edit_user.php',
-      //         data:id
-      //   	}).success(function(res){
-		    //   	$scope.user=res;
-      //   		 // $('#instmsg_edit').html(res);
 
-		    //   });
+     	$http({
+              method:'post',
+              url:'api/view_issues.php',
+              data:id
+        	}).success(function(res){
+		      	$scope.user=res;
+        		 $('#instmsg_edit').html(res);
+
+		      });
      }
      // edit
  //      $scope.edit_user = function(data){
