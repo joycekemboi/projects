@@ -5,16 +5,12 @@
  		
  			.when('/',{
  				controller:'UserController',
- 				templateUrl:'app/views/users/view.html'
+ 				templateUrl:'app/views/users/view_projects.html'
  			})
- 			// .when('/users/add_new',{
- 			// 	controller:'UserController',
- 			// 	templateUrl:'app/views/users/add_new.html'
- 			// })
- 			// .when('/users/edit/:id',{
- 			// 	controller:'UserController',
- 			// 	templateUrl:'app/views/users/edit.html'
- 			// })
+ 			.when('/users/view_issues/:id',{
+ 				controller:'UserController',
+ 				templateUrl:'app/views/users/view_issues.html'
+ 			})
  			.otherwise({redirectTo:'/'})
  });
 }());

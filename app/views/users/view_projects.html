@@ -1,0 +1,28 @@
+ <div ng-init="view_projects()"  >
+ <!-- szkhdfzudgh -->
+   <div class="container">
+                <h1 class="text-center">
+                    <span />{{name}}</span>
+                </h1>
+                 <br>
+                    <a style="margin-left:34em" href="{{userData.html_url}}" class="btn btn-default">
+                        <span class="octicon octicon-octoface"></span>
+                        {{userData.login}}                        
+                    </a>
+                    
+
+     </div>
+       <div class="panel-body">
+        <!-- <div class="list-group"> -->
+
+          <table class="table table-stripped table-bordered table-hover"  ng-table="users">
+			<tbody>
+			<tr ng-repeat="repo in repoData | filter:searchText  | orderBy:predicate:reverse" >
+			  <td title="'Project'" filter="{name:'text'}" sortable="'name'"><a title="view issues" href="#/users/view_issues/{{repo.id}}">{{repo.name}}</a></td>
+			<td title="'Description'" filter="{description:'text'}" sortable="'description'">{{repo.description}}</td>
+			<!-- <td title="view issues"><a href="#/:id">view issues</a></td> -->
+			</tr>
+			</tbody>
+		</table>
+         <!-- </div> -->
+   </div>

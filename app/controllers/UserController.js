@@ -2,64 +2,46 @@
 	var user = function ($scope,$log,$http,NgTableParams,settings,$routeParams){
      // $scope.jj = 'mee';
      $scope.settings = settings;
-     $scope.get_users = function(){
-     	$http({
-         method:'post',
-         url:'api/users/view.php'
-     	}).success(function(rs){
-         $scope.users = new NgTableParams({},{filterDelay:0,dataset:rs});
-
-     	});
-     };
-     $scope.showMe = function(data){
-        $scope.show=true;
-        $scope.hide=true;
-	        	//alert('joyc');
-        	$http({
-              method:'post',
-              url:'api/users/edit_user.php',
-              data:data
-        	}).success(function(res){
-		      	$scope.response=res;
-        		 $('#instmsg_edit').html(res);
-
-		      });
-	        
     
-     }
-     // addition
-     // function to submit the form after all validation has occurred            
-     $scope.submitForm = function(isValid)
-     {
-     	// check to make sure the form is completely valid
-	    if (isValid) {
-	      // alert('our form is amazing');
-	        $scope.create_user = function(data){
-	        	//alert('joyc');
-	        	$http({
-                  method:'post',
-                  url:'api/users/add_new.php',
-                  data:data
-	        	}).success(function(res){
-			      	$scope.response=res;
-	        		 $('#instmsg').html(res);
+     $scope.view_projects = function(){
+       $scope.reposLoaded = false;
 
-			      });
-	        };
-	    }
+        $scope.userLoaded = false;
+        $scope.name = "Joyce Kemboi";
+        $scope.username = "joycekemboi";
+         
+        $http.get("https://api.github.com/users/" + $scope.username)
+            .success(function (data) {
+                $scope.userData = data;
+                loadRepos();
+            });
+
+        var loadRepos = function () {
+            $http.get($scope.userData.repos_url)
+                .success(function (data) {
+                    $scope.repoData = data;
+                });
+        };
+          
+
+        $scope.predicate = '-updated_at';
+
+
+
      };
-    
+
      $scope.edit = function(){
      	var id = $routeParams.id;
-     	$http({
-              method:'post',
-              url:'api/users/edit_user.php',
-              data:id
-        	}).success(function(res){
-		      	$scope.user=res;
-        		 // $('#instmsg_edit').html(res);
+      
+     	// $http({
+      //         method:'post',
+      //         url:'api/users/edit_user.php',
+      //         data:id
+      //   	}).success(function(res){
+		    //   	$scope.user=res;
+      //   		 // $('#instmsg_edit').html(res);
 
-		      });
+		    //   });
      }
      // edit
  //      $scope.edit_user = function(data){
